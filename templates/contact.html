@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    @keyframes slideFadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-in {
+      opacity: 0;
+      animation: slideFadeIn 0.8s ease-out forwards;
+    }
+
+    .slide-delay-1 { animation-delay: 0.2s; }
+    .slide-delay-2 { animation-delay: 0.4s; }
+
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 40px;
+      margin-top: 30px;
+    }
+
+    .profile {
+      max-width: 300px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .divider {
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, #ccc, transparent);
+      height: 200px;
+      align-self: center;
+    }
+
+    .profile h2 {
+      text-align: center;
+      border-bottom: 1px solid #555;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .profile p, .profile a {
+      color: #ddd;
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin: 5px 0;
+      display: block;
+      text-align: center;
+    }
+
+    .profile a:hover {
+      color: #00d9ff;
+    }
+
+    /* ✅ Light mode override */
+    body.light-mode .profile {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #111;
+    }
+
+    body.light-mode .profile h2,
+    body.light-mode .profile p,
+    body.light-mode .profile a {
+      color: #111;
+    }
+
+    body.light-mode .profile a:hover {
+      color: #0077cc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-left">
+      <a href="/">← Back</a>
+    </div>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="ArcWeather Logo" class="logo">
+    <div class="nav-right">
+      <label class="switch">
+        <input type="checkbox" id="themeToggle" />
+        <span class="slider"></span>
+      </label>
+    </div>
+  </header>
+
+  <main class="contact-container">
+    <div class="profile slide-in slide-delay-1">
+      <h2>Surisetty Aswath Nag</h2>
+      <p>Email: <a href="mailto:2420080009@klh.edu.in">2420080009@klh.edu.in</a></p>
+      <a href="https://www.linkedin.com/in/surisetty-aswath-nag-226170344" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Aswath220" target="_blank">GitHub</a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="profile slide-in slide-delay-2">
+      <h2>Rohan Dharmesh Joshi</h2>
+      <p>Email: <a href="mailto:2420080092@klh.edu.in">2420080092@klh.edu.in</a></p>
+      <a href="https://www.linkedin.com/in/rohan-joshi-463ab5347/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/rrohan-joshi" target="_blank">GitHub</a>
+    </div>
+  </main>
+
+  <script>
+    const toggle = document.getElementById("themeToggle");
+    toggle.addEventListener("change", () => {
+      document.body.classList.toggle("light-mode");
+      localStorage.setItem("theme", document.body.classList.contains("light-mode") ? "light" : "dark");
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      if (localStorage.getItem("theme") === "light") {
+        document.body.classList.add("light-mode");
+        toggle.checked = true;
+      }
+    });
+  </script>
+</body>
+</html>

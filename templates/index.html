@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1a2d" />
+  <title>ArcWeather - Weather Dashboard</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header>
+    <div class="nav-left">
+      <a href="/about">About Us</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="ArcWeather Logo" class="logo" />
+    <div class="nav-right">
+      <label class="switch">
+        <input type="checkbox" id="themeToggle" />
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <section id="leftPane">
+      <div id="map" aria-label="Interactive map to select location"></div>
+      <p id="coords">Lat: --, Lon: --</p>
+    </section>
+
+    <section id="infoBox">
+      <canvas id="clockCanvas" width="200" height="200" aria-label="Analog clock"></canvas>
+      <div id="digitalTime">--:--:--</div>
+      <h2 id="location">Click on the map</h2>
+      <h3 id="temperature">-- °C</h3>
+      <div id="weather-cards-container" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

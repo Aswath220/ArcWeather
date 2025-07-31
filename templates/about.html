@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About Us - ArcWeather</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+  <style>
+    @keyframes slideFadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-in {
+      opacity: 0;
+      animation: slideFadeIn 0.8s ease-out forwards;
+    }
+
+    .slide-delay-1 { animation-delay: 0.2s; }
+    .slide-delay-2 { animation-delay: 0.4s; }
+    .slide-delay-3 { animation-delay: 0.6s; }
+
+    #leftPane {
+      text-align: left;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-left">
+      <a href="/">← Back</a>
+    </div>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="ArcWeather Logo" class="logo">
+    <div class="nav-right">
+      <label class="switch">
+        <input type="checkbox" id="themeToggle" />
+        <span class="slider"></span>
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <section id="leftPane">
+      <h1 class="slide-in slide-delay-1">About ArcWeather</h1>
+      <p class="slide-in slide-delay-2">
+        This project was developed as a submission for the <strong>Hack With India</strong> contest organized by the FEDF department at <strong>KLH Bachupally</strong>. It aims to provide an interactive platform where users can retrieve real-time <strong>weather</strong> and <strong>time</strong> data for any location on the globe.
+      </p>
+      <p class="slide-in slide-delay-3">
+        Technologies used in this project include <strong>Leaflet.js</strong> for the interactive world map, and the <strong>OpenWeather API</strong> for fetching live weather data. The interface is enhanced with a responsive <strong>dark/light mode toggle</strong>, modern UI styling, and real-time clock visualization (both digital and analog).
+      </p>
+      <p class="slide-in slide-delay-3">
+        Additionally, this project taught us how to effectively work with <strong>JSON structures</strong>, manage asynchronous <strong>API calls</strong>, and integrate <strong>Python Flask</strong> with <strong>JavaScript</strong> for a seamless full-stack application experience. We also learned the importance of user experience, frontend/backend communication, and designing modular, scalable codebases.
+      </p>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
